@@ -110,10 +110,11 @@ jobs:
       - name: Atualizar tag da imagem
         run: |
           cd loja-infra/apps/loja-api/overlays/staging
+          SHORT_SHA=${GITHUB_SHA::7}
           kustomize edit set image \
-            ghcr.io/${{ github.repository_owner }}/loja-api=ghcr.io/${{ github.repository_owner }}/loja-api:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/loja-api=ghcr.io/${{ github.repository_owner }}/loja-api:${SHORT_SHA}
           git config user.email "ci@github-actions"
           git config user.name "GitHub Actions"
           git add .
-          git commit -m "ci: atualiza loja-api para ${{ github.sha }}"
+          git commit -m "ci: atualiza loja-api para ${SHORT_SHA}"
           git push
