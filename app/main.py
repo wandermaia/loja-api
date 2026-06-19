@@ -1,4 +1,4 @@
-# app/main.py 
+# app/main.py
 from fastapi import FastAPI
 from prometheus_fastapi_instrumentator import Instrumentator
 
