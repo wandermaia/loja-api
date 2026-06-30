@@ -13,3 +13,8 @@ def test_produtos_retorna_lista():
     response = client.get("/produtos")
     assert response.status_code == 200
     assert len(response.json()) > 0
+
+def test_categorias_retorna_lista():
+    response = client.get("/categorias")
+    assert response.status_code == 200
+    assert "Periféricos" in response.json()
